@@ -1,0 +1,39 @@
+<h2 class="fw-bold font-monospace text-center text-danger">Food Order Summary </h2>
+
+<div class="container font-monospace">
+    <ul>
+        <li> EMP ID : {{ foodOrders.user.emp_id}} </li>
+        <li> EMP NAME : {{ foodOrders.user.f_name}}</li>
+        <li>Monthly Total Fine : ₹ {{ GetTotalFine()}}</li>
+      </ul>
+     <br>
+</div>
+  <div class="container border secondary" >
+    <table class="table table-hover">
+        <thead>
+              <tr>
+                <th scope="col">Sr.No.</th>
+                <th scope="col">Date</th>
+                <th scope="col">Breakfast</th>
+                <th scope="col">Lunch</th>
+                <th scope="col">Dinner</th>
+                <th scope="col">Daily Fine(₹)</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let report of foodOrders.reports;let i=index">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{ report.date }}</td>
+                <td>{{ report.opt_ins.breakfast || '-' }}</td>
+                <td>{{ report.opt_ins.lunch || '-' }}</td>
+                <td>{{ report.opt_ins.dinner || '-'}}</td>
+                <td>{{ report.opt_ins.breakfast === 'Pending' || report.opt_ins.lunch === 'Pending' || report.opt_ins.dinner === 'Pending' ? 100 : 0 }}</td>
+              </tr>
+            </tbody>
+          
+      </table>
+  </div>
+ 
+
+
+ 
